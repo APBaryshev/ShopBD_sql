@@ -4,6 +4,7 @@ Also used here are:
 - LEFT JOIN,
 - GROUP BY,
 - HAVING,
+- SUM,
 - ASC, DESC, 
 - ORDER BY,
 - COALESCE.
