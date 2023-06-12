@@ -1,4 +1,4 @@
-create database ShopDB
+create database ShopDB;
 
 create table customer
 (id serial primary key,
