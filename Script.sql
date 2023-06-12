@@ -115,3 +115,18 @@ name     |sum  |
 Александр|96998|
 Федор    |29999|
 Ульяна   |24999|
+
+--
+select c.name, coalesce (sum (p.price), 0) as orders_sum from customer c left join cart on cart.customer_id = c.id 
+left join cart_product cp on cp.cart_id=cart.id left join product p on p.id=cp.product_id
+group by c.name
+order by c.name ASC;
+
+name     |orders_sum|
+---------+----------+
+Александр|     96998|
+Владимир |         0|
+Марина   |         0|
+Ульяна   |     24999|
+Федор    |     29999|
+Эдуард   |         0|
