@@ -76,15 +76,40 @@ values (1), (3), (5);
 insert into cart_product (cart_id, product_id)
 values (1, 1), (1, 6), (2, 10), (3, 16);
 
+--
 select cart.id, c.name from cart left join customer c on cart.customer_id = c.id
 group by name, cart.id
 order by name asc;
 
+id|name     |
+--+---------+
+ 1|Александр|
+ 3|Ульяна   |
+ 2|Федор    |
+
+--
 select c.name, cart.id as cart_id, cp.product_id, p.price from customer c left join cart on cart.customer_id = c.id 
 left join cart_product cp on cp.cart_id=cart.id left join product p on p.id=cp.product_id;
 
+name     |cart_id|product_id|price|
+---------+-------+----------+-----+
+Александр|      1|         1|49999|
+Александр|      1|         6|46999|
+Федор    |      2|        10|29999|
+Ульяна   |      3|        16|24999|
+Владимир |       |          |     |
+Эдуард   |       |          |     |
+Марина   |       |          |     |
+
+--
 select c.name, sum (p.price) from customer c left join cart on cart.customer_id = c.id 
 left join cart_product cp on cp.cart_id=cart.id left join product p on p.id=cp.product_id
 group by c.name
 having sum(p.price)>0
 order by sum desc;
+
+name     |sum  |
+---------+-----+
+Александр|96998|
+Федор    |29999|
+Ульяна   |24999|
