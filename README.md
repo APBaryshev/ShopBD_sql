@@ -5,4 +5,5 @@ Also used here are:
 - GROUP BY,
 - HAVING,
 - ASC, DESC, 
-- ORDER BY.
+- ORDER BY,
+- COALESCE.
