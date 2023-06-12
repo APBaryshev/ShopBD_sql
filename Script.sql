@@ -1,3 +1,5 @@
+create database ShopDB
+
 create table customer
 (id serial primary key,
 name varchar (255),
